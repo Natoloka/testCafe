@@ -1,0 +1,39 @@
+{
+  "name": "testcafe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "testcafe ./tests/test1.js --c ./testcaferc.js",
+    "testCount": "testcafe ./tests/test4.js --c ./testcaferc.js",
+    "separateTestCase": "testcafe ./tests/test4.js -t 'Count amount of elements' --c ./testcaferc.js",
+    "testWithAllureReport": "testcafe ./tests/test6.js --c ./testcaferc.js --reporter allure-plus",
+    "testIFrameWithAllureReport": "testcafe ./tests/test7.js --c ./testcaferc.js --reporter allure-plus",
+    "testAPIWithAllureReport": "testcafe ./tests/test8.js --c ./testcaferc.js --reporter allure-plus",
+    "openAllureReport":"allure generate allure/allure-results --clean -o allure/allure-report && allure open allure/allure-report",
+    "usingPageObject": "testcafe ./tests/test5.js --c ./testcaferc.js",
+    "runWithAllureReport": "testcafe ./tests/test5.js --reporter allure-plus",
+    "testWithHtmlReports": "testcafe ./tests --c ./testcaferc.js --reporter html:reports/testAutomationReport.html",
+    "testWithCucumberReports": "testcafe ./tests --c ./testcaferc.js --reporter cucumber-json --reporter-json-folder=reports/jsonReports",
+    "generateCucumberReport": "node .\report-generator.js",
+    "baseBlink": "testcafe ./tests/test3.js --c ./testcaferc.js -s ./screenshots/blink --take-snapshot base",
+    "actualBlink": "testcafe ./tests/test3.js --c ./testcaferc.js -s ./screenshots/blink --take-snapshot actual",
+    "diffBlink": "npx testcafe-blink-diff ./screenshots/blink --compare base:actual --open --threshold 0.03",
+    "testsInFolder": "testcafe chrome ./tests",
+    "testFirefox": "testcafe 'edge:headless','chrome:emulation:device=iphone X' tests/test1.js",
+    "listBrowsers": "testcafe --list-browsers"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "multiple-cucumber-html-reporter": "^3.6.2",
+    "testcafe": "^3.5.0",
+    "testcafe-blink-diff": "^0.5.6"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.29.0",
+    "testcafe-reporter-allure-plus": "^1.2.1",
+    "testcafe-reporter-cucumber-json": "^4.0.1",
+    "testcafe-reporter-html": "^1.4.6"
+  }
+}
